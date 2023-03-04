@@ -1,0 +1,69 @@
+export const description = 'Seasons'
+
+# Seasons
+
+## The season model
+
+### Properties
+
+<Properties>
+  <Property name="id" type="string">
+    Unique identifier for the season.
+  </Property>
+  <Property name="number" type="integer">
+    The season number
+  </Property>
+  <Property name="startDate" type="string">
+    Original date when the season started
+  </Property>
+  <Property name="endDate" type="string">
+    Original date when season ended{' '}
+  </Property>
+</Properties>
+
+---
+
+## List all seasons {{ tag: 'GET', label: '/api/seasons' }}
+
+<Row>
+  <Col>
+
+    Retrieve all seasons available.
+
+    ### Optional attributes
+
+    <Properties>
+      <Property name="limit" type="integer">
+        Limit the number of contacts returned.
+      </Property>
+    </Properties>
+
+  </Col>
+  <Col sticky>
+
+    <CodeGroup title="Request" tag="GET" label="/api/seasons">
+
+    ```bash {{ title: 'cURL' }}
+    curl -G https://theofficeapi.dev/api/seasons
+    ```
+
+    </CodeGroup>
+
+    ```json {{ title: 'Response' }}
+    [
+      {
+        "id": "640150ede4cd7dc24960d8fc",
+        "number": 1,
+        "startDate": "2005-03-24",
+        "endDate": "2005-04-26"
+      },
+      {
+        "id": "640150ede4cd7dc24960d8fd"
+        // ...
+      }
+    ]
+
+    ```
+
+  </Col>
+</Row>

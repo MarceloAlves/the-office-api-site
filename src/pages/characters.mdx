@@ -1,0 +1,184 @@
+export const description = 'Characters'
+
+# Characters
+
+## The character model
+
+### Properties
+
+<Properties>
+  <Property name="id" type="string">
+    Unique identifier for the character.
+  </Property>
+  <Property name="name" type="string">
+    The character's name.
+  </Property>
+  <Property name="gender" type="string">
+    The characters gender.
+  </Property>
+  <Property name="marital" type="string">
+    The person the character is married to.
+  </Property>
+  <Property name="job" type="array<string>">
+    List of jobs the character had.
+  </Property>
+  <Property name="workspace" type="array<string>">
+    List of locations a character has worked.
+  </Property>
+  <Property name="firstAppearance" type="string">
+    Title of the episode the character appeared in.
+  </Property>
+  <Property name="lastAppearance" type="string">
+    The last episode the character was in.
+  </Property>
+  <Property name="actor" type="string">
+    Name of the actor who portrayed the character.
+  </Property>
+  <Property name="episodes" type="array<Episode>">
+    List of episodes the character appeared in.
+  </Property>
+</Properties>
+
+---
+
+## List all characters {{ tag: 'GET', label: '/api/characters' }}
+
+<Row>
+  <Col>
+
+    Lists all characters available and optionally includes the episodes they appeared in. The episodes are not included by default.
+
+    ### Optional attributes
+
+    <Properties>
+      <Property name="limit" type="integer">
+        Limit the number of characters returned.
+      </Property>
+      <Property name="includeEpisodes" type="boolean">
+        Include the episodes the character appeared in.
+      </Property>
+    </Properties>
+
+  </Col>
+  <Col sticky>
+
+    <CodeGroup title="Request" tag="GET" label="/api/characters">
+
+    ```bash {{ title: 'cURL' }}
+    curl -G https://theofficeapi.dev/api/characters \
+      -d includeEpisodes=true \
+      -d limit=10
+    ```
+
+
+    </CodeGroup>
+
+    ```json {{ title: 'Response' }}
+    [
+      {
+        "id": "640150efe4cd7dc24960d937",
+        "name": "Michael Scott",
+        "gender": "Male",
+        "marital": "Holly Flax",
+        "job": [
+          "Regional Manager",
+          "Founder and CEO",
+        ],
+        "workplace": [
+          "Dunder Mifflin Scranton",
+          "The Michael Scott Paper Company",
+        ],
+        "firstAppearance": "Pilot",
+        "lastAppearance": "Finale",
+        "actor": "Steve Carell",
+
+        // Included if `includeEpisodes` is true
+        "episodes": [
+          {
+            "type": "MAIN",
+            "id": "640150f1e4cd7dc24960d959",
+            "title": "Pilot",
+            "summary": "A documentary crew arrives at the Scranton, Pennsylvania, offices of Dunder Mifflin to observe the employees and learn about modern management. Regional manager Michael Scott  tries to paint a happy picture in the face of potential downsizing from corporate. The office also gets new employee Ryan Howard as a temporary worker, while salesman Jim Halpert pranks and antagonizes fellow salesman Dwight Schrute , much to the enjoyment of receptionist Pam Beesly .",
+            "season": {
+              "id": "640150ede4cd7dc24960d8fc",
+              "number": 1
+            },
+            "airDate": "2005-03-24",
+            "episode": "1",
+            "seriesEpisodeNumber": 1
+          },
+        ]
+      },
+      {
+        "id": "640150efe4cd7dc24960d936",
+        // ...
+      }
+    ]
+    ```
+
+  </Col>
+</Row>
+
+---
+
+## Retrieve a character {{ tag: 'GET', label: '/api/character/:id' }}
+
+<Row>
+  <Col>
+
+    This endpoint allows you to retrieve a character by providing the character id. Refer to [the list](#the-character-model) at the top of this page to see which properties are included with character objects.
+
+  </Col>
+  <Col sticky>
+
+    <CodeGroup title="Request" tag="GET" label="/api/character/640150efe4cd7dc24960d943">
+
+    ```bash {{ title: 'cURL' }}
+    curl https://theofficeapi.dev/api/character/640150efe4cd7dc24960d943 \
+      -d includeEpisodes=true
+    ```
+
+
+    </CodeGroup>
+
+    ```json {{ title: 'Response' }}
+    {
+      "id": "640150efe4cd7dc24960d940",
+      "name": "Pam Beesly",
+      "gender": "Female",
+      "marital": null,
+      "job": [
+        "Sales Representative, Dunder Mifflin Scranton,",
+        "Sales Representative, Michael Scott Paper Company,",
+      ],
+      "workplace": ["Dunder Mifflin Scranton", "Michael Scott Paper Company"],
+      "firstAppearance": "Pilot",
+      "lastAppearance": "Finale",
+      "actor": "Jenna Fischer",
+
+      // Included if `includeEpisodes` is true
+      "episodes": [
+        {
+          "type": "MAIN",
+          "id": "640150f1e4cd7dc24960d959",
+          "title": "Pilot",
+          "summary": "A documentary crew arrives at the Scranton, Pennsylvania, offices of Dunder Mifflin to observe the employees and learn about modern management. Regional manager Michael Scott  tries to paint a happy picture in the face of potential downsizing from corporate. The office also gets new employee Ryan Howard as a temporary worker, while salesman Jim Halpert pranks and antagonizes fellow salesman Dwight Schrute , much to the enjoyment of receptionist Pam Beesly .",
+          "season": {
+            "id": "640150ede4cd7dc24960d8fc",
+            "number": 1
+          },
+          "airDate": "2005-03-24",
+          "episode": "1",
+          "seriesEpisodeNumber": 1
+        },
+        {
+          "id": "640150f2e4cd7dc24960d967",
+          // ...
+        }
+      ]
+    }
+
+    ```
+
+  </Col>
+</Row>
