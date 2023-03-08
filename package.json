@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "postbuild": "node ./scripts/create_redirect.cjs",
     "start": "next start",
     "lint": "next lint"
   },
