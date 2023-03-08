@@ -1,0 +1,62 @@
+export const description = 'All about pagination'
+
+# Pagination
+
+Current the Episodes and Characters endpoints support pagination. By default each will return 10 records. {{ className: 'lead' }}
+
+In paginated responses, objects are nested in a `results` attribute and have a `meta` attribute that includes the `nextPage`, `previousPage`, `pageCount` and some other useful attributes. You can use the `page` query parameter to browse pages.
+
+## Example using offset
+
+<Row>
+  <Col>
+    <Properties>
+      <Property name="page" type="integer">
+        The page you're wanting to view.
+      </Property>
+      <Property name="limit" type="integer">
+        Limit the number of items returned.
+      </Property>
+    </Properties>
+
+  </Col>
+  <Col>
+
+    ```bash {{ title: 'cURL' }}
+    curl -G https://theofficeapi.dev/api/episodes \
+      -d page=2 \
+      -d limit=20
+    ```
+
+    ```json {{ title: 'Paginated response' }}
+    {
+      "results": [
+        {
+          "id": "640036cfde06b8114eb9a6a8",
+          "title": "Halloween",
+          "summary": "Downsizing leads corporate headquarters to order Michael to fire somebody by the end of October. Michael procrastinates until Halloween, when he still has not decided whom to fire. When he decides to fire Quality Assurance representative Creed Bratton, Creed manages to convince Michael to fire Supplier Relations representative Devon White instead.",
+          "episode": "5",
+          "seriesEpisodeNumber": 11,
+          "airDate": "2005-10-18",
+          "season": {
+            "id": "640036cfde06b8114eb9a596",
+            "number": 2,
+            "startDate": "2005-09-20",
+            "endDate": "2006-05-11"
+          }
+        },
+        // 19 more episodes
+      ],
+      "meta": {
+        "isFirstPage": false,
+        "isLastPage": false,
+        "currentPage": 2,
+        "previousPage": 1,
+        "nextPage": 3,
+        "pageCount": 19
+      }
+    }
+    ```
+
+  </Col>
+</Row>
