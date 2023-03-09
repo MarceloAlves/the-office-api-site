@@ -25,27 +25,27 @@ In paginated responses, objects are nested in a `results` attribute and have a `
     ```bash {{ title: 'cURL' }}
     curl -G https://theofficeapi.dev/api/episodes \
       -d page=2 \
-      -d limit=20
+      -d limit=10
     ```
 
     ```json {{ title: 'Paginated response' }}
     {
       "results": [
         {
-          "id": "640036cfde06b8114eb9a6a8",
+          "id": 11,
           "title": "Halloween",
           "summary": "Downsizing leads corporate headquarters to order Michael to fire somebody by the end of October. Michael procrastinates until Halloween, when he still has not decided whom to fire. When he decides to fire Quality Assurance representative Creed Bratton, Creed manages to convince Michael to fire Supplier Relations representative Devon White instead.",
           "episode": "5",
           "seriesEpisodeNumber": 11,
           "airDate": "2005-10-18",
           "season": {
-            "id": "640036cfde06b8114eb9a596",
+            "id": 2,
             "number": 2,
             "startDate": "2005-09-20",
             "endDate": "2006-05-11"
           }
         },
-        // 19 more episodes
+        // 9 more episodes
       ],
       "meta": {
         "isFirstPage": false,

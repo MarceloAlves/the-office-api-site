@@ -77,7 +77,7 @@ export const description = 'Characters'
     {
       "results": [
         {
-          "id": "640150efe4cd7dc24960d937",
+          "id": 55,
           "name": "Michael Scott",
           "gender": "Male",
           "marital": "Holly Flax",
@@ -94,11 +94,11 @@ export const description = 'Characters'
           "episodes": [
             {
               "type": "MAIN",
-              "id": "640150f1e4cd7dc24960d959",
+              "id": 1,
               "title": "Pilot",
               "summary": "A documentary crew arrives at the Scranton, Pennsylvania, offices of Dunder Mifflin to observe the employees and learn about modern management. Regional manager Michael Scott  tries to paint a happy picture in the face of potential downsizing from corporate. The office also gets new employee Ryan Howard as a temporary worker, while salesman Jim Halpert pranks and antagonizes fellow salesman Dwight Schrute , much to the enjoyment of receptionist Pam Beesly .",
               "season": {
-                "id": "640150ede4cd7dc24960d8fc",
+                "id": 1,
                 "number": 1
               },
               "airDate": "2005-03-24",
@@ -108,7 +108,7 @@ export const description = 'Characters'
           ]
         },
         {
-          "id": "640150efe4cd7dc24960d936"
+          "id": 2
           // ...
         }
       ],
@@ -141,7 +141,7 @@ export const description = 'Characters'
     <CodeGroup title="Request" tag="GET" label="/api/character/640150efe4cd7dc24960d943">
 
     ```bash {{ title: 'cURL' }}
-    curl https://theofficeapi.dev/api/character/640150efe4cd7dc24960d943 \
+    curl https://theofficeapi.dev/api/character/62 \
       -d includeEpisodes=true
     ```
 
@@ -150,7 +150,7 @@ export const description = 'Characters'
 
     ```json {{ title: 'Response' }}
     {
-      "id": "640150efe4cd7dc24960d940",
+      "id": 62,
       "name": "Pam Beesly",
       "gender": "Female",
       "marital": null,
@@ -167,11 +167,11 @@ export const description = 'Characters'
       "episodes": [
         {
           "type": "MAIN",
-          "id": "640150f1e4cd7dc24960d959",
+          "id": 1,
           "title": "Pilot",
           "summary": "A documentary crew arrives at the Scranton, Pennsylvania, offices of Dunder Mifflin to observe the employees and learn about modern management. Regional manager Michael Scott  tries to paint a happy picture in the face of potential downsizing from corporate. The office also gets new employee Ryan Howard as a temporary worker, while salesman Jim Halpert pranks and antagonizes fellow salesman Dwight Schrute , much to the enjoyment of receptionist Pam Beesly .",
           "season": {
-            "id": "640150ede4cd7dc24960d8fc",
+            "id": 1,
             "number": 1
           },
           "airDate": "2005-03-24",
@@ -179,7 +179,7 @@ export const description = 'Characters'
           "seriesEpisodeNumber": 1
         },
         {
-          "id": "640150f2e4cd7dc24960d967",
+          "id": 2,
           // ...
         }
       ]
