@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import { Router, useRouter } from 'next/router'
 import { MDXProvider } from '@mdx-js/react'
+import PlausibleProvider from 'next-plausible'
 
 import { Layout } from '@/components/Layout'
 import * as mdxComponents from '@/components/mdx'
@@ -33,11 +34,13 @@ export default function App({ Component, pageProps }) {
         />
         <meta name="description" content={pageProps.description} />
       </Head>
-      <MDXProvider components={mdxComponents}>
-        <Layout {...pageProps}>
-          <Component {...pageProps} />
-        </Layout>
-      </MDXProvider>
+      <PlausibleProvider domain="theofficeapi.dev">
+        <MDXProvider components={mdxComponents}>
+          <Layout {...pageProps}>
+            <Component {...pageProps} />
+          </Layout>
+        </MDXProvider>
+      </PlausibleProvider>
     </>
   )
 }
